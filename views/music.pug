@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1= title
+  - var results =[{name:"Classical", No_of_songs :5, type:"Melody"},{name:"Folk", No_of_songs :15, type:"Pitch"},{name:"Western",No_of_songs :25, type:"Rap"}]
+  div(class="container-fluid")
+  div(class="row")
+   each r,index  in results 
+    div(class="col-sm-2" onclick =`buy(${index})`) #{r.name}, #{r.No_of_songs}, #{r.type}
+  script.
+    function buy(index) {
+      alert(`You purchased item ${index+1}.`);
+    }
