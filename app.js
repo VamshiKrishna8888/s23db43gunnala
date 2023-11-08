@@ -28,6 +28,13 @@ app.use('/music', musicRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 
+module.exports = app;
+require('dotenv').config();
+const connectionString =
+process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -44,4 +51,4 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+
