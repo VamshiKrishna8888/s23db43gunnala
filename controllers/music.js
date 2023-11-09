@@ -33,8 +33,20 @@ exports.music_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: music detail: ' + req.params.id);
 };
 // Handle music create on POST.
-exports.music_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: music create POST');
+exports.music_create_post =  async function(req, res) {
+  console.log(req.body)
+  let document = new music()
+  document.name = req.body.name;
+  document.No_of_songs = req.body.No_of_songs;
+  document.type = req.body.type;
+  try {
+      let result = await document.save();
+      res.send(result);
+  }
+  catch (err) {
+      res.status(500);
+      res.send(`{"error": ${err}}`)
+  }
 };
 // Handle music delete form on DELETE.
 exports.music_delete = function(req, res) {

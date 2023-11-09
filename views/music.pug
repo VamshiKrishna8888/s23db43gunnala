@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results =[{name:"Classical", No_of_songs :5, type:"Melody"},{name:"Folk", No_of_songs :15, type:"Pitch"},{name:"Western",No_of_songs :25, type:"Rap"}]
+  - var results = results
   div(class="container-fluid")
   div(class="row")
    each r,index  in results 
