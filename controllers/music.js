@@ -3,7 +3,7 @@ var music = require('../models/music');
 // List of all musics
 exports.music_list = async function(req, res) {
 try{
-themusics = await music.find();
+themusic = await music.find();
 res.send(themusic);
 }
 catch(err){
@@ -17,8 +17,8 @@ res.send(`{"error": ${err}}`);
 // Handle a show all view
 exports.music_view_all_Page = async function(req, res) {
   try{
-  themusics = await music.find();
-  res.render('music', { title: 'music Search Results', results: themusics });
+  themusic = await music.find();
+  res.render('music', { title: 'music Search Results', results: themusic });
   }
   catch(err){
   res.status(500);
