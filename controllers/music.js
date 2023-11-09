@@ -1,8 +1,17 @@
 var music = require('../models/music');
 // List of all musics
-exports.music_list = function(req, res) {
-res.send('NOT IMPLEMENTED: music list');
+// List of all musics
+exports.music_list = async function(req, res) {
+try{
+themusics = await music.find();
+res.send(themusics);
+}
+catch(err){
+res.status(500);
+res.send(`{"error": ${err}}`);
+}
 };
+
 // for a specific music.
 exports.music_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: music detail: ' + req.params.id);
