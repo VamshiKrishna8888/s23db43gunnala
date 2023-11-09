@@ -10,8 +10,7 @@ var musicRouter = require('./routes/music');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var music = require("./models/music");
-
-
+var resourceRouter = require("./routes/resource");
 var app = express();
 
 // view engine setup
@@ -35,6 +34,7 @@ app.use('/users', usersRouter);
 app.use('/music', musicRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
+app.use('/resource', resourceRouter);
 
 
 
