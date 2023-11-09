@@ -4,13 +4,29 @@ var music = require('../models/music');
 exports.music_list = async function(req, res) {
 try{
 themusics = await music.find();
-res.send(themusics);
+res.send(themusic);
 }
 catch(err){
 res.status(500);
 res.send(`{"error": ${err}}`);
 }
 };
+
+
+// VIEWS
+// Handle a show all view
+exports.music_view_all_Page = async function(req, res) {
+  try{
+  themusics = await music.find();
+  res.render('music', { title: 'music Search Results', results: themusics });
+  }
+  catch(err){
+  res.status(500);
+  res.send(`{"error": ${err}}`);
+  }
+  };
+
+  
 
 // for a specific music.
 exports.music_detail = function(req, res) {

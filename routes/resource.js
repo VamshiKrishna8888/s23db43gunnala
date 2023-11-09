@@ -8,13 +8,13 @@ var music_controller = require('../controllers/music');
 router.get('/', api_controller.api);
 /// music ROUTES ///
 // POST request for creating a music.
-router.post('/musics', music_controller.music_create_post);
+router.post('/music', music_controller.music_create_post);
 // DELETE request to delete music.
-router.delete('/musics/:id', music_controller.music_delete);
+router.delete('/music/:id', music_controller.music_delete);
 // PUT request to update music.
-router.put('/musics/:id', music_controller.music_update_put);
+router.put('/music/:id', music_controller.music_update_put);
 // GET request for one music.
-router.get('/musics/:id', music_controller.music_detail);
+router.get('/music/:id', music_controller.music_detail);
 // GET request for list of all music items.
-router.get('/musics', music_controller.music_list);
+router.get('/music', music_controller.music_list);
 module.exports = router;
