@@ -19,4 +19,8 @@ router.get('/detail', music_controlers.music_view_one_Page);
 /* GET create music page */
 router.get('/create', music_controlers.music_create_Page);
 
+/* GET create update page */
+router.get('/update', music_controlers.music_update_Page);
+
+
 module.exports = router;

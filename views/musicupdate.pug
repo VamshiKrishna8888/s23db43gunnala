@@ -1,0 +1,39 @@
+extends layout
+block content
+    h1= title
+    - let musicid = toShow._id
+    - let name = toShow.name
+    - let No_of_songs = toShow.No_of_songs
+    - let type = toShow.type
+        div.row(class='mb-2')
+            div.mr-1 ID is
+            div #{musicid}
+            - let actionid = "/resource/music/" + musicid
+        form(id='musicForm', action= actionid, method="PUT")
+            div.form-group
+                label.musicAttr(for='name') music type
+                input#name(type='text', name='name', value= name )
+            div.form-group
+                label.musicAttr(for='No_of_songs') music No_of_songs
+                input#No_of_songs(type='Number', name='No_of_songs', value= musicize )
+            div.form-group
+                label.musicAttr(for='type') music type
+                input#type(type='text', name='type', value= musictype )
+            input(type="submit")
+        script.
+            document.forms['musicForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+                method: 'PUT',
+                body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Update succeded")
+                // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Update failed " + error )
+            });
+            });
