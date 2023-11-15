@@ -13,4 +13,10 @@ router.get('/music', music_controlers.music_view_all_Page);
 // GET request for one music
 router.get('/music/:id', music_controlers.music_detail);
 
+/* GET detail music page */
+router.get('/detail', music_controlers.music_view_one_Page);
+
+/* GET create music page */
+router.get('/create', music_controlers.music_create_Page);
+
 module.exports = router;
