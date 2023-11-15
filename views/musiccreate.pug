@@ -4,14 +4,14 @@ block content
     h1= title
         form(id='musicForm', action="/resource/music", method="POST")
             div.form-group
-                 label.musicAttr(for='name') music type
-                 input#name(type='text', name='name')
-             div.form-group
+                label.musicAttr(for='name') music type
+                input#name(type='text', name='name')
+            div.form-group
                 label.musicAttr(for='No_of_songs') music No_of_songs
-                input#No_of_songs(type='text', name='No_of_songs')
+                input#No_of_songs(type='Number', name='No_of_songs')
             div.form-group
                 label.musicAttr(for='type') music type
-                input#type(type='number', name='type')
+                input#type(type='text', name='type')
             input(type="submit")
         script.
             document.forms['musicForm'].addEventListener('submit', (event) => {
