@@ -22,5 +22,8 @@ router.get('/create', music_controlers.music_create_Page);
 /* GET create update page */
 router.get('/update', music_controlers.music_update_Page);
 
+/* GET delete music page */
+router.get('/delete', music_controlers.music_delete_Page);
+
 
 module.exports = router;
