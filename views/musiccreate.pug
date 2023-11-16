@@ -1,33 +1,34 @@
 
 extends layout
+
 block content
     h1= title
-        form(id='musicForm', action="/resource/music", method="POST")
-            div.form-group
-                label.musicAttr(for='name') music type
-                input#name(type='text', name='name')
-            div.form-group
-                label.musicAttr(for='No_of_songs') music No_of_songs
-                input#No_of_songs(type='Number', name='No_of_songs')
-            div.form-group
-                label.musicAttr(for='type') music type
-                input#type(type='text', name='type')
-            input(type="submit")
-        script.
-            document.forms['musicForm'].addEventListener('submit', (event) => {
-                event.preventDefault();
-                // TODO do something here to show user that form is being submitted
-                fetch(event.target.action, {
-                    method: 'POST',
-                    body: new URLSearchParams(new FormData(event.target)) // event.target is the form
-                }).then((resp) => {
-                    return resp.json(); // or resp.text() or whatever the server sends
-                }).then((body) => {
-                    alert("Save succeded")
-                    // TODO handle body
-                }).catch((error) => {
-                    // TODO handle error
-                    alert("Save failed " + error )
-                });
-                });
-                
+    form(id='musicForm', action="/resource/music", method="POST", style="max-width: 400px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);")
+        div.form-group(style="margin-bottom: 15px;")
+            label.musicAttr(for='name', style="display: block; font-size: 14px; color: #555;") Music Type
+            input#name(type='text', name='name', style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;")
+        div.form-group(style="margin-bottom: 15px;")
+            label.musicAttr(for='No_of_songs', style="display: block; font-size: 14px; color: #555;") Number of Songs
+            input#No_of_songs(type='number', name='No_of_songs', style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;")
+        div.form-group(style="margin-bottom: 15px;")
+            label.musicAttr(for='type', style="display: block; font-size: 14px; color: #555;") Music Type
+            input#type(type='text', name='type', style="width: 100%; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 3px;")
+        input(type="submit", style="background-color: #3498db; color: white; padding: 10px 15px; border: none; border-radius: 3px; cursor: pointer;")
+
+    script.
+        document.forms['musicForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO: Add code to show a loading indicator or disable the form during submission
+            fetch(event.target.action, {
+                method: 'POST',
+                body: new URLSearchParams(new FormData(event.target))
+            }).then((resp) => {
+                return resp.json();
+            }).then((body) => {
+                alert("Save succeeded");
+                // TODO: Handle the response body as needed
+            }).catch((error) => {
+                // TODO: Handle the error, show an error message to the user
+                alert("Save failed: " + error);
+            });
+        });
