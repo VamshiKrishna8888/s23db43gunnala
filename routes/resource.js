@@ -17,4 +17,4 @@ router.put('/music/:id', music_controller.music_update_put);
 router.get('/music/:id', music_controller.music_detail);
 // GET request for list of all music items.
 router.get('/music', music_controller.music_list);
-module.exports = router;
+module.exports = router;
