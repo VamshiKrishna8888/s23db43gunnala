@@ -35,7 +35,7 @@ app.use(require('express-session')({
   
 app.use(express.static(path.join(__dirname, 'public')));
 
-module.exports = app;
+
 require('dotenv').config();
 const connectionString =process.env.MONGO_CON
 mongoose = require('mongoose');
@@ -107,3 +107,4 @@ console.log("Connection to DB succeeded")});
 // if (reseed) {recreateDB();}
 
 
+module.exports = app;
