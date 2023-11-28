@@ -1,6 +1,10 @@
 var express = require('express');
 const music_controlers = require('../controllers/music');
 var router = express.Router();
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('music', { title: 'Search Results' });
+});
 
 
 // GET request for all music
