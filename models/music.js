@@ -7,6 +7,13 @@ const musicSchema = mongoose.Schema({
  type: {
     type: String,
     required: true,
+    required: true,
+    validate: {
+      validator: function (value) {
+        // Example validation: Check if the manufacturer contains only alphabetical characters
+        return /^[a-zA-Z]+$/.test(value);
+      },
+    },
   },
   No_of_songs: {
     type: Number,

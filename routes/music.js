@@ -13,8 +13,6 @@ const secured = (req, res, next) => {
 /* GET home page. */
 router.get('/' , music_controlers.music_view_all_Page)
 
-
-
 // GET request for all music
 router.get('/music', music_controlers.music_view_all_Page);
 
@@ -32,6 +30,4 @@ router.get('/update',secured, music_controlers.music_update_Page);
 
 /* GET delete music page */
 router.get('/delete', music_controlers.music_delete_Page);
-
-
 module.exports = router;
