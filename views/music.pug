@@ -2,18 +2,29 @@ extends layout
 
 block content
   h1= title
-  - var results = results || []  // Ensure 'results' is defined and not undefined
   div(class="container-fluid")
     div(class="row m-1")
-      each item, index in results
-        - let destination = `dispatch(\"/music/update?id=${item._id}\")`
-        div(class="row-sm-2", class="m-1") #{item.name}(#{item.No_of_songs})  #{item.type}
-          button.btn( class="btn-primary ml-1", onclick= destination) Update  
-    script.
-     function buy(index) {
-      alert(You purchased item ${index+1}.)
-      }
-    
-     function dispatch(path) {
-      window.location.href = path
-      }
+      // Add the button at the top of the collection view
+      div(class="row m-1")
+        button.btn(class="btn-success", onclick="dispatch('/music/create')") Create New
+
+      each item in results
+        - let updateDestination = `dispatch("/music/update?id=${item._id}")`
+        - let detailDestination = `dispatch("/music/detail?id=${item._id}")`
+        - let deleteDestination = `dispatch("/music/delete?id=${item._id}")`
+
+        // Display all three buttons in a single line for each item
+        div(class="row-sm-2 m-1")
+          | Item #{item.name}(#{item.No_of_songs})  #{item.type}
+          button.btn(class="btn-primary ml-1", onclick=updateDestination) Update 
+          button.btn(class="btn-primary m-1", onclick=detailDestination) Detail
+          button.btn(class="btn-primary m-1", onclick=deleteDestination) Delete
+
+  script.
+    function buy(index) {
+      alert("You purchased items " + (index + 1));
+    }
+
+    function dispatch(path) {
+      window.location.href = path;
+    }
