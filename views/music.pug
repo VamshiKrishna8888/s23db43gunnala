@@ -2,19 +2,19 @@ extends layout
 
 block content
   h1= title
+  - var results = results || []  // Ensure 'results' is defined and not undefined
+  .container-fluid
+    .row.m-1
+      each r, index in results
+        - let destination = `/music/update?id=${r._id}`  // Simplify the destination
+        div(class="row-sm-2", class="m-1") Item #{item.name}(#{item.No_of_songs}) is #{item.type}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update  
+    script.
+     function buy(index) {
+      alert(You purchased item ${index+1}.)
+      }
+    
+     function dispatch(path) {
+      window.location.href = path
+      }
 
-  div(class="container-fluid")
-    div(class="row m-1")
-      each item in results
-        - let destination = dispatch("/apartments/update?id=${item._id}")
-        div(class="row-sm-2", class="m-1") Item #{item.apartment_name}(#{item.location}) is #{item.rent}
-          button.btn(class="btn-primary ml-1", onclick=destination) Update
-
-  script.
-    function buy(index) {
-      alert("You purchased items " + (index + 1));
-    }
-
-    function dispatch(path) {
-      window.location.href = path;
-    }
