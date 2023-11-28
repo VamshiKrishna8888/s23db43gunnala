@@ -6,8 +6,8 @@ block content
   div(class="container-fluid")
     div(class="row m-1")
       each item, index in results
-        - let destination = `/music/update?id=${r._id}`  // Simplify the destination
-        div(class="row-sm-2", class="m-1") r #{item.name}(#{item.No_of_songs}) is #{item.type}
+        - let destination = `dispatch(\"/music/update?id=${item._id}\")`
+        div(class="row-sm-2", class="m-1") #{item.name}(#{item.No_of_songs})  #{item.type}
           button.btn( class="btn-primary ml-1", onclick= destination) Update  
     script.
      function buy(index) {
@@ -17,4 +17,3 @@ block content
      function dispatch(path) {
       window.location.href = path
       }
-
